@@ -48,11 +48,10 @@ Completing this tutorial should take about 30 minutes.
 
 5. Once the `classify` action is created, replace the default "hello world" function with the following code for recognizing images, and then click **Save**.
 
-    ```
+```
+from watson_developer_cloud import VisualRecognitionV3
 
-    from watson_developer_cloud import VisualRecognitionV3
-
-    def main(params):
+def main(params):
     # init visual recognition library
     apiKey = params['apiKey']
     version = "2018-03-19"
@@ -73,8 +72,8 @@ Completing this tutorial should take about 30 minutes.
         tags = tags + currentTag + ", "
     result = {'classes': tags}
     return result
-    ```
 
+```
 3. Create a [Visual Recognition service](https://cloud.ibm.com/catalog/services/visual-recognition/?cm_sp=ibmdev-_-developer-tutorials-_-cloudreg).
 
     ![VR Create](images/vr-create.png)
