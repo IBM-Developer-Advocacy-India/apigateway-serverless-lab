@@ -53,25 +53,26 @@ Completing this tutorial should take about 30 minutes.
     from watson_developer_cloud import VisualRecognitionV3
 
     def main(params):
-        # init visual recognition library
-        apiKey = params['apiKey']
-        version = "2018-03-19"
-        visual_recognition = VisualRecognitionV3(version=version, iam_apikey=apiKey)
+    # init visual recognition library
+    apiKey = params['apiKey']
+    version = "2018-03-19"
+    default_url = "https://api.us-south.visual-recognition.watson.cloud.ibm.com"
+    visual_recognition = VisualRecognitionV3(version=version, iam_apikey=apiKey, url=default_url)
 
-        # get image url from params
-        image_url = params['imageUrl']
+    # get image url from params
+    image_url = params['imageUrl']
 
-        # parse visual recognition return data for our tags
-        tags = ""
-        classifiedImages = visual_recognition.classify(url=image_url).get_result()
-        image = classifiedImages['images'][0]
-        classes = image['classifiers'][0]['classes']
-        for theClass in classes:
-            currentTag = theClass['class']
-            print(currentTag)
-            tags = tags + currentTag + ", "
-        result = {'classes': tags}
-        return result
+    # parse visual recognition return data for our tags
+    tags = ""
+    classifiedImages = visual_recognition.classify(url=image_url).get_result()
+    image = classifiedImages['images'][0]
+    classes = image['classifiers'][0]['classes']
+    for theClass in classes:
+        currentTag = theClass['class']
+        print(currentTag)
+        tags = tags + currentTag + ", "
+    result = {'classes': tags}
+    return result
     ```
 
 3. Create a [Visual Recognition service](https://cloud.ibm.com/catalog/services/visual-recognition/?cm_sp=ibmdev-_-developer-tutorials-_-cloudreg).
